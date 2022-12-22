@@ -205,7 +205,7 @@ gloo:
       disabled: true
 
     # ----------------- Proxy for Tenant 1 -----------------
-    tenantProxy1:
+    dataPlaneTenantProxy1:
       disabled: false
 
       ## Disabled to generate Gateways manually
@@ -344,7 +344,7 @@ gloo:
       ## xdsServicePort: 9991
 
     # ----------------- Proxy for Tenant 2 -----------------
-    tenantProxy2:
+    dataPlaneTenantProxy2:
       disabled: false
 
       ## Disabled to generate Gateways manually
