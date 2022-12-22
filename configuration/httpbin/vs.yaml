@@ -1,0 +1,17 @@
+apiVersion: gateway.solo.io/v1
+kind: VirtualService
+metadata:
+  name: httpbin-vs
+  labels:
+    gateway-type: tenant1
+spec:
+  virtualHost:
+    domains:
+      - 'httpbin.$DOMAIN_NAME'
+    routes:
+      - matchers:
+          - prefix: /
+        routeAction:
+          single:
+            upstream:
+              name: httpbin-upstream

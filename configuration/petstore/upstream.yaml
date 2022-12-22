@@ -1,0 +1,14 @@
+apiVersion: gloo.solo.io/v1
+kind: Upstream
+metadata:
+  name: petstore-upstream
+  labels:
+    app: petstore
+    discovery.solo.io/function_discovery: enabled
+spec:
+  kube:
+    selector:
+      app: petstore
+    serviceName: petstore
+    serviceNamespace: tenant2
+    servicePort: 8080

@@ -1,0 +1,8 @@
+apiVersion: portal.gloo.solo.io/v1beta1
+kind: APIDoc
+metadata:
+  name: petstore-schema
+spec:
+  openApi:
+    content:
+      fetchUrl: http://petstore.tenant2.svc:8080/openapi.json

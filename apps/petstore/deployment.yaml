@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: petstore
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: petstore
+  labels:
+    service: petstore
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+  selector:
+    app: petstore
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: petstore
+  labels:
+    app: petstore
+spec:
+  selector:
+    matchLabels:
+      app: petstore
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: petstore
+    spec:
+      serviceAccountName: petstore
+      containers:
+        - name: petstore
+          image: openapitools/openapi-petstore
+          env:
+            - name: DISABLE_OAUTH
+              value: "1"
+            - name: DISABLE_API_KEY
+              value: "1"
+          ports:
+            - name: http
+              containerPort: 8080
